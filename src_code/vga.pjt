@@ -1,0 +1,60 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="Camera_Haar_v1"
+ProjectDir="D:\DSP_Project\Phong_Project\Processing\Camera_Skin_Blob_320x240_Face_Camshift\"
+ProjectType=Executable
+CPUFamily=TMS320C64XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="src\def_val.c"
+Source="src\draw_rectangle.c"
+Source="src\face_detection.c"
+Source="src\hand_detection5.c"
+Source="src\hand_detectionA.c"
+Source="src\hand_detectionB.c"
+Source="src\hand_detectionOK.c"
+Source="src\meanshift.c"
+Source="src\post_process.c"
+Source="src\profilerApi_timer2.c"
+Source="src\skin_ycbcr.c"
+Source="src\video_rgb.c"
+Source="src\ycbcr422pl_to_rgb565_h.asm"
+Source="video.tcf"
+Source="video.cmd"
+Source="videocfg.cmd"
+
+[Generated Files]
+Source="videocfg.s62"
+Source="videocfg_c.c"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -o3 -fr"$(Proj_dir)\Debug" -i"$(Install_dir)\boards\evmdm642\include" -i"$(Install_dir)\c6400\imglib\include" -i"$(Install_dir)\boards\evmdm642\drivers\include" -i"$(Proj_dir)\src" -i"$(Install_dir)\boards\evmdm642\csl\include" -i"$(Install_dir)\c6400\mthlib\include" -i"$(Install_dir)\VLIB_2_2\include" -d"_DEBUG" -d"CHIP_DM642" -ml3 -mv6400
+
+["Compiler" Settings: "Release"]
+Options=-g -q -fr"$(Proj_dir)\Release" -i"$(Install_dir)\boards\evmdm642\include" -i"$(Install_dir)\c6400\imglib\include" -i"$(Install_dir)\boards\evmdm642\drivers\include" -i"$(Proj_dir)\src" -i"$(Install_dir)\boards\evmdm642\csl\include" -i"$(Install_dir)\c6400\mthlib\include" -d"_DEBUG" -d"CHIP_DM642" -ml3 -mv6400
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v6x
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v6x
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m"$(Proj_dir)\Debug\Debug.map" -o"$(Proj_dir)\Debug\Debug.out" -x -i"$(Install_dir)\boards\evmdm642\lib" -i"$(Install_dir)\boards\evmdm642\drivers\lib" -i"%BIOS_INSTALL_DIR%/packages/ti/rtdx/lib/C6000" -i"$(Install_dir)\c6400\imglib\lib" -i"$(Install_dir)\c6400\mthlib\lib" -i"$(Install_dir)\VLIB_2_2\library\c64" -l"img64x.lib" -l"fastrts64x.lib" -l"cslDM642.lib" -l"vlib_errChk.l64"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m"$(Proj_dir)\Release\Release.map" -o"$(Proj_dir)\Release\Release.out" -x -i"$(Install_dir)\boards\evmdm642\lib" -i"$(Install_dir)\boards\evmdm642\drivers\lib" -i"%BIOS_INSTALL_DIR%/packages/ti/rtdx/lib/C6000" -i"$(Install_dir)\c6400\imglib\lib" -i"$(Install_dir)\c6400\mthlib\lib" -l"img64x.lib" -l"fastrts64x.lib" -l"cslDM642.lib"
+
+["videocfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["videocfg.cmd" Settings: "Release"]
+ExcludeFromBuild=true
+

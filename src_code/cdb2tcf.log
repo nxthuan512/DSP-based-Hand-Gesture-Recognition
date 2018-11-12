@@ -1,0 +1,18 @@
+Application: C:/CCStudio_v3.1/boards/evmdm642/examples/video/driver/video.cdb
+Original seed file: c:/ccstudio_v3.3/bios_5_31_02/packages/ti/bios/config/update/4.90.270/c64xx.cdb
+Loading application CDB file
+Device name: DM642
+Catalog: ti.catalog.c6000
+Generating CSL files
+Unloading the application CDB file
+Loading original seed: c:/ccstudio_v3.3/bios_5_31_02/packages/ti/bios/config/update/4.90.270/c64xx.cdb
+Finding user changes
+Loading new seed file
+New seed: c:/ccstudio_v3.3/bios_5_31_02/packages/ti/bios/config/cdb/c64xx.cdb
+Applying changes
+Warning: Field CSLNAME no longer exists in cdb file.
+Saving original C:/CCStudio_v3.1/boards/evmdm642/examples/video/driver/video.cdb in C:/CCStudio_v3.1/boards/evmdm642/examples/video/driver/video.cdb.Sat_Mar_10_09.22.33_2012
+Creating TCF file: C:/CCStudio_v3.1/boards/evmdm642/examples/video/driver/video.tcf
+Tconf search path information is required for running the generated tcf file.
+The search path info for the Tconf.exe command line has been saved in
+tcfopts.dat.

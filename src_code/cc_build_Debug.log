@@ -1,0 +1,9 @@
+------------------------------  vga.pjt - Debug  ------------------------------
+[video_rgb.c] "C:\CCStudio_v3.3\C6000\cgtools\bin\cl6x" -g -q -o3 -fr"D:/DSP_Project/Phong_Project/Processing/Camera_Skin_Blob_320x240_Face_Camshift/Debug" -i"C:/CCStudio_v3.3/boards/evmdm642/include" -i"C:/CCStudio_v3.3/c6400/imglib/include" -i"C:/CCStudio_v3.3/boards/evmdm642/drivers/include" -i"D:/DSP_Project/Phong_Project/Processing/Camera_Skin_Blob_320x240_Face_Camshift/src" -i"C:/CCStudio_v3.3/boards/evmdm642/csl/include" -i"C:/CCStudio_v3.3/c6400/mthlib/include" -i"C:/CCStudio_v3.3/VLIB_2_2/include" -d"_DEBUG" -d"CHIP_DM642" -ml3 -mv6400 -@"../Debug.lkf" "video_rgb.c"
+"video_rgb.c", line 188: warning: variable "cpu_cycles1" was declared but never referenced
+
+[Linking...] "C:\CCStudio_v3.3\C6000\cgtools\bin\cl6x" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 1 Warnings, 0 Remarks.

@@ -1,0 +1,13 @@
+;Codewright Project Space File (do not remove or modify this line)
+[State]
+StateWindowFrame=%ld,%ld,%ld,%ld,0x%08lx
+
+
+[Project]
+ConfigSetUserWorkspace=''
+ConfigSetUserWorkspaceParser=''
+ConfigSetUserWorkspaceTimeStamp=%ld
+ConfigSetUserWorkspaceAutoSync=%ld
+
+[Project.".\vga.pjt"]
+

@@ -1,0 +1,203 @@
+environment["ti.bios.oldMemoryNames"] = true;
+
+/* loading the generic platform */
+var params = {};
+params.clockRate = 720.000000;
+params.deviceName = "DM642";
+params.catalogName = "ti.catalog.c6000";
+params.regs = {};
+params.regs.l2Mode = "4-way cache (0k)";
+utils.loadPlatform("ti.platforms.generic", params);
+
+
+/* enabling DSP/BIOS components */
+bios.GBL.ENABLEINST = true;
+bios.MEM.NOMEMORYHEAPS = false;
+bios.RTDX.ENABLERTDX = true;
+bios.HST.HOSTLINKTYPE = "RTDX";
+bios.TSK.ENABLETSK = true;
+bios.GBL.ENABLEALLTRC = true;
+
+bios.GBL.ENDIANMODE = "little";
+
+bios.GBL.C641XCONFIGUREL2 = true;
+bios.ISRAM.createHeap = true;
+bios.ISRAM.heapSize = 0x8000;
+
+bios.MEM.BIOSOBJSEG = prog.get("ISRAM");
+bios.MEM.MALLOCSEG = prog.get("ISRAM");
+bios.TSK.STACKSEG = prog.get("ISRAM");
+
+
+/* applying user changes */
+bios.SDRAM = bios.MEM.create("SDRAM");
+
+bios.SDRAM.comment = "This object defines space for the DSP's off-chip memory";
+
+bios.SDRAM.base = 0x80000000;
+
+bios.SDRAM.len = 0x2000000;
+
+bios.SDRAM.heapSize = 0x1000000;
+
+bios.SDRAM.enableHeapLabel = 1;
+
+bios.SDRAM.heapLabel = prog.extern("EXTERNALHEAP");
+
+bios.SDRAM.space = "code/data";
+
+bios.tskLoopback = bios.TSK.create("tskLoopback");
+
+bios.trace = bios.LOG.create("trace");
+
+bios.VP0CAPTURE = bios.UDEV.create("VP0CAPTURE");
+
+bios.VP1CAPTURE = bios.UDEV.create("VP1CAPTURE");
+
+bios.VP2DISPLAY = bios.UDEV.create("VP2DISPLAY");
+
+bios.RTA_fromHost.bufSeg = prog.get("SDRAM");
+
+bios.RTA_toHost.bufSeg = prog.get("SDRAM");
+
+bios.TSK_idle.stackMemSeg = prog.get("SDRAM");
+
+bios.LOG_system.bufSeg = prog.get("SDRAM");
+
+bios.LOG_system.bufLen = 0x400;
+
+bios.MEM.ARGSSEG = prog.get("SDRAM");
+
+bios.MEM.BIOSSEG = prog.get("SDRAM");
+
+bios.MEM.STACKSIZE = 0x1000;
+
+bios.MEM.STACKSEG = prog.get("SDRAM");
+
+bios.MEM.SYSINITSEG = prog.get("SDRAM");
+
+bios.MEM.GBLINITSEG = prog.get("SDRAM");
+
+bios.MEM.TRCDATASEG = prog.get("SDRAM");
+
+bios.MEM.SYSDATASEG = prog.get("SDRAM");
+
+bios.MEM.OBJSEG = prog.get("SDRAM");
+
+bios.MEM.BIOSOBJSEG = prog.get("SDRAM");
+
+bios.MEM.MALLOCSEG = prog.get("SDRAM");
+
+bios.MEM.TEXTSEG = prog.get("SDRAM");
+
+bios.MEM.SWITCHSEG = prog.get("SDRAM");
+
+bios.MEM.BSSSEG = prog.get("SDRAM");
+
+bios.MEM.FARSEG = prog.get("SDRAM");
+
+bios.MEM.CINITSEG = prog.get("SDRAM");
+
+bios.MEM.PINITSEG = prog.get("SDRAM");
+
+bios.MEM.CONSTSEG = prog.get("SDRAM");
+
+bios.MEM.DATASEG = prog.get("SDRAM");
+
+bios.MEM.CIOSEG = prog.get("SDRAM");
+
+bios.MEM.SYSMEMSEG = prog.get("SDRAM");
+
+bios.MEM.HWISEG = prog.get("SDRAM");
+
+bios.MEM.HWIVECSEG = prog.get("SDRAM");
+
+bios.MEM.RTDXTEXTSEG = prog.get("SDRAM");
+
+bios.GBL.CALLUSERINITFXN = 1;
+
+bios.BUF.OBJMEMSEG = prog.get("SDRAM");
+
+bios.PRD.OBJMEMSEG = prog.get("SDRAM");
+
+bios.HST.OBJMEMSEG = prog.get("SDRAM");
+
+bios.TSK.OBJMEMSEG = prog.get("SDRAM");
+
+bios.TSK.STACKSEG = prog.get("SDRAM");
+
+bios.tskLoopback.comment = "Loopback Task";
+
+bios.tskLoopback.fxn = prog.extern("tskVideoLoopback");
+
+bios.tskLoopback.stackMemSeg = prog.get("SDRAM");
+
+bios.IDL.OBJMEMSEG = prog.get("SDRAM");
+
+bios.LOG.OBJMEMSEG = prog.get("SDRAM");
+
+bios.trace.bufSeg = prog.get("SDRAM");
+
+bios.trace.bufLen = 0x400;
+
+bios.PIP.OBJMEMSEG = prog.get("SDRAM");
+
+bios.SEM.OBJMEMSEG = prog.get("SDRAM");
+
+bios.MBX.OBJMEMSEG = prog.get("SDRAM");
+
+bios.QUE.OBJMEMSEG = prog.get("SDRAM");
+
+bios.LCK.OBJMEMSEG = prog.get("SDRAM");
+
+bios.SIO.OBJMEMSEG = prog.get("SDRAM");
+
+bios.STS.OBJMEMSEG = prog.get("SDRAM");
+
+bios.SYS.TRACESEG = prog.get("SDRAM");
+
+bios.GIO.ENABLEGIO = 1;
+
+bios.VP0CAPTURE.fxnTable = prog.extern("VPORTCAP_Fxns");
+
+bios.VP0CAPTURE.fxnTableType = "IOM_Fxns";
+
+bios.VP0CAPTURE.params = prog.extern("EVMDM642_vCapParamsPort");
+
+bios.VP1CAPTURE.fxnTable = prog.extern("VPORTCAP_Fxns");
+
+bios.VP1CAPTURE.fxnTableType = "IOM_Fxns";
+
+bios.VP1CAPTURE.deviceId = 1;
+
+bios.VP1CAPTURE.params = prog.extern("EVMDM642_vCapParamsPort");
+
+bios.VP2DISPLAY.fxnTable = prog.extern("VPORTDIS_Fxns");
+
+bios.VP2DISPLAY.fxnTableType = "IOM_Fxns";
+
+bios.VP2DISPLAY.deviceId = 0x2;
+
+bios.VP2DISPLAY.params = prog.extern("EVMDM642_vDisParamsPort");
+
+bios.DHL.OBJMEMSEG = prog.get("SDRAM");
+
+bios.DIO.OBJMEMSEG = prog.get("SDRAM");
+
+bios.GBL.USERINITFXN = prog.extern("EVMDM642_init");
+
+bios.CLK.OBJMEMSEG = prog.get("SDRAM");
+
+bios.RTDX.RTDXDATASEG = prog.get("SDRAM");
+
+bios.SWI.OBJMEMSEG = prog.get("SDRAM");
+
+bios.ISRAM.len = 0x20000;
+
+bios.ISRAM.createHeap = 0;
+
+// !GRAPHICAL_CONFIG_TOOL_SCRIPT_INSERT_POINT!
+
+if (config.hasReportedError == false) {
+    prog.gen();
+}
